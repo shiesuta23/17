@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>17</title>
+
+    <!-- 丸ゴシックフォントの読み込み -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- 別にしたCSSファイルをここで読み込んでいます -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ヘッダーナビゲーション -->
+    <header>
+        <div class="site-title">17</div>
+        <div class="menu-btn" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <!-- 右から出てくるメニュー -->
+    <nav class="nav-menu" id="navMenu">
+        <ul>
+            <li><a href="#top" onclick="toggleMenu()">トップ</a></li>
+            <li><a href="#gallery" onclick="toggleMenu()">ギャラリー</a></li>
+            <li><a href="#profile" onclick="toggleMenu()">プロフィール</a></li>
+        </ul>
+    </nav>
+
+    <!-- 【セクション1】トップメイン画像 -->
+    <div id="top" class="hero-section">
+        <img class="hero-image" src="images/top.jpg" alt="トップメイン画像">
+    </div>
+
+    <!-- 【セクション2】ギャラリー -->
+    <section id="gallery" class="gallery-section">
+        <div class="gallery-container">
+
+            <div class="section-title">GALLERY</div>
+
+            <!-- 中央の大きな画像エリア（一番オキニ） -->
+            <div class="main-display" onclick="zoomImage(document.getElementById('favoriteImg').src)">
+                <img id="favoriteImg" src="images/1.JPG" alt="一番オキニの画像">
+            </div>
+
+            <!-- 下の3×3の小さい画像グリッド -->
+            <div class="thumbnail-grid">
+                <img class="thumbnail" src="images/2.JPG" alt="画像1" onclick="zoomImage(this.src)">
+                <img class="thumbnail" src="images/3.JPG" alt="画像2" onclick="zoomImage(this.src)">
+                <img class="thumbnail" src="images/4.JPG" alt="画像3" onclick="zoomImage(this.src)">
+
+                <img class="thumbnail" src="images/5.JPG" alt="画像4" onclick="zoomImage(this.src)">
+                <img class="thumbnail" src="images/6.jpg" alt="画像5" onclick="zoomImage(this.src)">
+                <img class="thumbnail" src="images/7.jpg" alt="画像6" onclick="zoomImage(this.src)">
+
+                <img class="thumbnail" src="images/8.jpg" alt="画像7" onclick="zoomImage(this.src)">
+                <img class="thumbnail" src="images/9.jpg" alt="画像8" onclick="zoomImage(this.src)">
+                <img class="thumbnail" src="images/10.jpg" alt="画像9" onclick="zoomImage(this.src)">
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 【セクション3】プロフィール枠（情報を追加＆英語表記をブラッシュアップ） -->
+    <section id="profile" class="profile-section">
+        <div class="profile-container">
+            <div class="section-title">PROFILE</div>
+            <div class="profile-card">
+                <p class="profile-text font-bold">Produced by Fuka & Uta</p>
+
+                <p class="profile-subtext">Information Design Course, Department of Social Design,</p>
+                <p class="profile-subtext">Faculty of Arts and Science, Kyushu Sangyo University</p>
+
+                <div class="profile-divider"></div>
+
+                <!-- 🔴 メールアドレスとInstagramの連絡先を追加しました -->
+                <p class="profile-contact">Contact : <span class="font-regular">fuka.n.contact@gmail.com</span></p>
+                <p class="profile-contact">Instagram : <span class="font-regular">@fu.lllz @i0u23v</span></p>
+
+                <p class="profile-subtext note">Produced as part of a university class.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 全画面拡大モーダル -->
+    <div id="imageModal" class="modal-overlay" onclick="closeZoom()">
+        <span class="close-btn">&times;</span>
+        <img id="zoomedImg" class="modal-zoom-img" src="" alt="拡大中">
+    </div>
+
+    <!-- 動きのスクリプト -->
+    <script>
+        function toggleMenu() {
+            const menuBtn = document.querySelector('.menu-btn');
+            const navMenu = document.getElementById('navMenu');
+            menuBtn.classList.toggle('open');
+            navMenu.classList.toggle('open');
+        }
+
+        const imageModal = document.getElementById("imageModal");
+        const zoomedImg = document.getElementById("zoomedImg");
+
+        function zoomImage(imgSrc) {
+            imageModal.style.display = "flex";
+            zoomedImg.src = imgSrc;
+        }
+
+        function closeZoom() {
+            imageModal.style.display = "none";
+            zoomedImg.src = "";
+        }
+    </script>
+</body>
+
+</html>
